@@ -1,0 +1,95 @@
+<?php
+/**
+ *
+ * Main interop gateway point entry by implementing hook_services_resources()
+ * Methods:
+ * 	GET index: Retrieves json object representing a user or a payment.
+ *	POST create: Creates a new transaction.
+ *	PUT update: Applies a transaction.
+ */
+function ces_interop_gateway_services_resources() {
+	return array(
+		'interop' => array(
+			'create' => array(
+				'help' => 'Creates a new transaction that will need to be updated.',
+				'file' => array('file' => 'inc', 'module' => drupal_get_path('module', 'ces_interop') . '/ces_interop'),
+				'callback' => '_ces_interop_gateway_create',
+				'access callback' => '_ces_interop_gateway_access',
+				'access arguments' => array('interop gateway create'),
+				'access arguments append' => TRUE,
+				'args' => array(
+					array(
+						'name' => 'buyer',
+						'type' => 'string',
+						'description' => 'Account name of the buyer user, four chars.',
+						'source' => 'data',
+						'optional' => FALSE,
+					),
+					array(
+						'name' => 'seller',
+						'type' => 'string',
+						'description' => 'Account name of the seller user, four chars.',
+						'source' => 'data',
+						'optional' => FALSE,
+					),
+					array(
+						'name' => 'amount',
+						'type' => 'int',
+						'description' => 'The amount of transanction; consider this in cens.',
+						'source' => 'data',
+						'optional' => FALSE,
+					),
+					array(
+						'name' => 'concept',
+						'type' => 'string',
+						'description' => 'A description for transaction.',
+						'source' => 'data',
+						'optional' => FALSE,
+					),
+				),
+			),
+			'update' => array(
+				'help' => 'Applys a transaction by changing status.',
+				'file' => array('file' => 'inc', 'module' => drupal_get_path('module', 'ces_interop') . '/ces_interop'),
+				'callback' => '_ces_bank_update',
+				'access callback' => '_ces_interop_gateway_access',
+				'access arguments' => array('interop gateway apply'),
+				'access arguments append' => FALSE,
+				'args' => array(
+					array(
+						'name' => 'id',
+						'type' => 'string',
+						'description' => 'The id of the transaction',
+						'source' => 'data',
+						'optional' => FALSE,
+					),
+				),
+			),
+			'index' => array(
+				'help' => 'Retrieves user or transaction by @type param.',
+				'file' => array('file' => 'inc', 'module' => drupal_get_path('module', 'ces_interop') . '/ces_interop'),
+				'callback' => '_ces_interop_gateway_index',
+				'access callback' => '_ces_interop_gateway_access',
+				'access arguments' => array('interop gateway index'),
+				'access arguments append' => FALSE,
+				'args' => array(
+					array(
+						'name' => 'type',
+						'type' => 'string',
+						'description' => 'Can be user or payment literals, wether you provide account or transaction id.',
+						'source' => array( 'param' => 'type' ),
+						'optional' => FALSE,
+					),
+					array(
+						'name' => 'id',
+						'type' => 'int',
+						'description' => 'The identification number of transaction or account.',
+						'source' => array( 'param'=>'id'),
+						'optional' => FALSE,
+					),
+				),
+			),   
+		),
+	);
+ }
+
