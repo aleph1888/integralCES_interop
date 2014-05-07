@@ -23,7 +23,7 @@ function _ces_interop_gateway_index ( $type, $id ) {
 		case "user":
 			$bank = new bank();
 
-			$account = $bank->ces_account_load( (int)$id );
+			$account = ces_account_load( (int)$id );
 
 			if ( $account ) {
 				return array(
@@ -39,7 +39,7 @@ function _ces_interop_gateway_index ( $type, $id ) {
 		case "payment":
 			$bank = new bank();
 
-			$transaction = $bank->ces_transaction_load( (int)$id );
+			$transaction = ces_transaction_load( (int)$id );
 
 			if ( $transaction ) {
 				return array(
@@ -87,14 +87,15 @@ function _ces_interop_gateway_create( $params ) {
 	$bank->createTransaction( $record );
 
 	//$result = $bank->applyTransaction( $record['id'] );
-	$transaction = $bank->ces_load_transaction( $record['id'] );
+	$transaction = ces_load_transaction( $record['id'] );
 
 	if ( $record['id'] > 0 ) {
 		return array( 
 			"id" => $record['id'], 
 			"result" => $result, 
-			"state" => $transaction["state"] 
-	) else {
+			"state" => $transaction["state"]
+		); 
+	} else {
 		return array( 
 			"id" => 0, 
 			"result" => FALSE, 
