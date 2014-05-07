@@ -87,12 +87,12 @@ function _ces_interop_gateway_create( $params ) {
 	$bank->createTransaction( $record );
 
 	//$result = $bank->applyTransaction( $record['id'] );
-	$transaction = ces_load_transaction( $record['id'] );
+	$transaction = ces_transaction_load( $record['id'] );
 
 	if ( $record['id'] > 0 ) {
 		return array( 
 			"id" => $record['id'], 
-			"result" => $result, 
+			"result" => $record['id'] > 0, 
 			"state" => $transaction["state"]
 		); 
 	} else {
