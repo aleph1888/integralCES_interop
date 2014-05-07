@@ -1,0 +1,11 @@
+name = CES interoperatibilty
+description = Implements 2-legged oAuth service for gateways
+core = 7.x
+package = ces
+
+files[] = ces_interop.inc
+
+dependencies[] = ces
+dependencies[] = ctools
+dependencies[] = libraries
+dependencies[] = oauth_common
