@@ -7,7 +7,7 @@
  *	POST create: Creates a new transaction.
  *	PUT update: Applies a transaction.
  */
-function ces_interop_gateway_services_resources() {
+function ces_interop_services_resources() {
 	return array(
 		'interop' => array(
 			'create' => array(
