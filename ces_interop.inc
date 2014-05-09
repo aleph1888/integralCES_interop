@@ -8,8 +8,8 @@ require_once drupal_get_path('module', 'ces_bank') . '/ces_bank.module';
  * INDEX Callback implementation for 
  * 		ces_interop.module//ces_interop_gateway_services_resources()
  *
- * @params string CONST $type Any value in {'user', 'type'}
- * @params int $id Depending on $type, an Account or a Transaction identificator.
+ * @params string CONST $type Any value in {'client', 'user', 'payment'}
+ * @params int $id Depending on $type.
  *
  * @returns array 
  *		$type == 'user' [ (int)id, (string)name, int(amount) ]
@@ -19,6 +19,9 @@ require_once drupal_get_path('module', 'ces_bank') . '/ces_bank.module';
 function _ces_interop_gateway_index ( $type, $id ) {
 
 	switch( $type ) {
+
+		case "client":
+			return TRUE;
 
 		case "user":
 			$bank = new bank();

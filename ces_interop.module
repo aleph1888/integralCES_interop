@@ -3,7 +3,7 @@
  *
  * Main interop gateway point entry by implementing hook_services_resources()
  * Methods:
- * 	GET index: Retrieves json object representing a user or a payment.
+ * 	GET index: Perform several getting operations.
  *	POST create: Creates a new transaction.
  *	PUT update: Applies a transaction.
  */
@@ -76,7 +76,7 @@ function ces_interop_services_resources() {
 					array(
 						'name' => 'type',
 						'type' => 'string',
-						'description' => 'Can be user or payment literals, wether you provide account or transaction id.',
+						'description' => 'Can be {client, user, payment}',
 						'source' => array( 'param' => 'type' ),
 						'optional' => FALSE,
 					),
