@@ -1,11 +1,11 @@
 integralCES_interop
 ===================
 
-Implements gateway interop for http://integralces.net
+Implements payment gateway interop for http://integralces.net
 
 Whats this for
 ----------------------------------
-[A web service for a gateway](https://wiki.enredaos.net/images/2/21/IntegralcesGeneric.png), that implements [OAuth 1.0](https://wiki.enredaos.net/index.php?title=File:Oauth-drupal.jpg) in [3-legged](https://wiki.enredaos.net/images/thumb/c/c2/OAuth_Process.jpg/800px-OAuth_Process.jpg) way by hooking [*services_resources*](http://drupalcontrib.org/api/drupal/contributions!services!services.services.api.php/function/hook_services_resources/6) in ces_interop.module
+[A web service for a payment gateway](https://wiki.enredaos.net/images/2/21/IntegralcesGeneric.png), that implements [OAuth 1.0](https://wiki.enredaos.net/index.php?title=File:Oauth-drupal.jpg) in [3-legged](https://wiki.enredaos.net/images/thumb/c/c2/OAuth_Process.jpg/800px-OAuth_Process.jpg) way by hooking [*services_resources*](http://drupalcontrib.org/api/drupal/contributions!services!services.services.api.php/function/hook_services_resources/6) in ces_interop.module
 
 
 Server configuracion
@@ -16,13 +16,13 @@ Create web service by using your drupal UI Admin interface. Here you have the [s
 Using info
 ----------------
 
-2) Http consuming: 
+1) Http consuming: 
 
 A common service can be consumed by http://yourCES_Server/entrypoint/resource, if you have configured your REST server named as it is named on [tutorial](https://github.com/aleph1888/integralCES_interop/blob/master/SERVICES_SERVER_CONFIG.md) *gateway*, then your url will be:
 
 * http://yourCES_Server/gateway/interop
 
-3) Available methods:
+2) Available methods:
 
 * GET, with params:
   - string **type** { 'client', 'logged', 'user', 'paymen' }
