@@ -14,11 +14,11 @@ Whats this for
  <pre>$drush en services -y</pre>
 Activar via web oAuth, Services, Services-authentication, services-servers(REST server)
 
- Add Authorization level 
+Add Authorization level 
 -------------------------------------
 Entrar en el panel de **configuración** de nuestro Drupal y en el apartado **Web Services** entramos en **oAuth** y seleccionamos la pestaña *Add Context*. Damos **context title** (*CES Context*) y **context name** (*cesinterop_context*).  Dentro de ésta, en la sección **Authorization Levels**, pulsamos sobre el botón **Add authorization level**, le damos un **nombre** (*interop*) y un **título** (*CES Interoperatibility*) al nuevo nivel y seleccionamos la casilla *Selected By Default*. En **signature methods**, escogemos los métodos de firma que queremos habilitar, para este ejemplo *HMAC_SHA1*.
 
- Create service json 
+Create service json 
 ------------------------------------
 Crearemos un servicio con **autorización**: *3-legged oAuth*.
 
@@ -32,17 +32,17 @@ Aquí volveremos tras instalar el resource **ces/ces_interop** para activarlo. E
 
 También podemos habilitar las opciones de **node** para probar el funcionamiento.
 
- Create user oAuth consumer 
+Create user oAuth consumer 
 ----------------------------------------
 Para terminar sólo tendremos que crear un **usuario oAuth** que nos de acceso al servicio sin poner en riesgo la seguridad del sistema. Para esto, en *gent->permisos->rols* crearemos un **rol de usuario** llamado *ces oAuth* y que para este ejemplo posea los siguientes **privilegios adicionales**: En el apartado **oAuth** hay que añadirle *Access own oAuth authorizations*, *Access own oAuth consumers*, *Register oAuth consumers in CES Context* y *Authorize oAuth consumers in CES Context*. En el apartado **services**, *save file information*.
 
 Creamos un **usuario consumer** llamado *ces_consumer* con **contraseña** *ces_consumer* y **rol** *ces oAuth* que sea el encargado de realizar las peticiones y nos identificamos con él en nuestro Drupal. Entramos en  **User Account** (*Mi cuenta*) (¿**Es posible que haya que crearle una cuenta dentro de un exchange para que pueda acceder**?) accedemos a la pestaña **oAuth Consumers**, añadimos un consumidor con **nombre** *ces_consumer_oAuth*, por ejemplo, y **callback url** en blanco para pasársela vía código cuando la aplicación que consume la api haga la petición. Y ya está. Ahora, una vez creado, podemos acceder a nuestro **consumer key** que tiene la forma *6fkm9oB4wUugyTGfiBR2oxQU6HE8Z8qV* y **consumer secret**, con forma *3rLQiS63Wzsx3fsjWZefCTgtcj3MWw8u* accediendo a la pestaña **oAuth consumers** del  usuario y clicando en **editar** sobre el consumidor creado. Y con esto hemos terminado de crear nuestro servicio web y nuestro usuario para acceder a sus recursos.
 
- Allow authenticated users in your created context 
+Allow authenticated users in your created context 
 ---------------------------------------------------------------
 In order to allow your users to get 3-legged access token, check in People->Permissions **OAuth** options *Register OAuth consumers in CES Context* and *Authorize OAuth consumers in CES Context*.
 
- Prueba 
+Prueba 
 --------------------
 Para probar que todo funciona correctamente podemos usar un complemento para Firefox llamado **RESTClient**. Para usarlo hacemos click en su icono en la barra de herramientas y, en su ventana añadimos nuestro **usuario oAuth** en la opción **Authentication – >OAuth** del menú superior. Rellenamos el **Consumer key y el Consumer secret**, el resto no hace falta con nuestro tipo de autentificación 2-legged.
 
