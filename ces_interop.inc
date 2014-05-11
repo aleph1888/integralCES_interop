@@ -121,9 +121,6 @@ function _ces_interop_gateway_create( $params ) {
                 );
 	}
 
-error_log("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
-error_log($seller["id"]);
-
 	// Set transaction info
 	$record = array(
 		"fromaccount" => $buyer_user["id"],
@@ -195,12 +192,14 @@ function _ces_interop_gateway_get_oauth_context() {
         $req = DrupalOAuthRequest::from_request();
         $consumer_key = $req->get_parameter( 'oauth_consumer_key' );
         $consumer = DrupalOAuthConsumer::loadProviderByKey( $consumer_key );
-
-	$context = oauth_common_context_load($consumer->context);
-	if ( $context )
-		return $consumer->context;
-	else
-		return null;
+	
+	if ( $consumer ) {
+		$context = oauth_common_context_load($consumer->context);
+		if ( $context )
+			return $consumer->context;
+	}
+	
+	return NULL;
 
 }
 
@@ -216,10 +215,15 @@ function _ces_interop_gateway_get_oauth_user() {
 
 	$req = DrupalOAuthRequest::from_request();
 	$consumer_key = $req->get_parameter( 'oauth_consumer_key' );
+	
 	$consumer = DrupalOAuthConsumer::loadProviderByKey( $consumer_key );
-	$token_key = $req->get_parameter( 'oauth_token' );
-	$token = DrupalOAuthToken::loadbyKey( $token_key, $consumer );
-	return $token->uid;
+	
+	if ( $consumer ) {
+		$token_key = $req->get_parameter( 'oauth_token' );
+		$token = DrupalOAuthToken::loadbyKey( $token_key, $consumer );
+		return $token->uid;
+	}
+	return 0;
 
 }
 
