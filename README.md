@@ -40,7 +40,15 @@ A common service can be consumed by http://yourCES_Server/entrypoint/resource, i
   					--> Meaning: Client wants to retrieve a payment.
 
  - string **id** Identifies the retrieved entity
+
+Returns
+  - array wether....
  
+ 		$type == 'client' 	[ (string)context ]
+ 		$type == 'logged' 	[ (int)id, (string)name, int(amount) ]
+ 		$type == 'user' 	  [ (int)id, (string)name, int(amount) ]
+ 		$type == 'payment' 	[ (int)id, (int)buyer, (int)seller, (int)(amount), (string)concept, (int)state ]
+ 		
 * POST (creates new payment), with params:
   - array **params**
   
@@ -48,6 +56,10 @@ A common service can be consumed by http://yourCES_Server/entrypoint/resource, i
   			string **seller** Buyer account name.
   			int **amount** Amount in cents.
   			string **concept** Any description for transaction.
+Returns
+ - array [ (int)id, (bool)result, (int)state ]
+ 
+NOTE: (int)state is a valid  TransactionInterface::STATE
 
 Info
 ------------------
