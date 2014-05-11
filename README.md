@@ -26,6 +26,7 @@ A common service can be consumed by http://yourCES_Server/entrypoint/resource, i
 
 2.1) GET, with params:
 
+IN:
   - string **type** { 'client', 'logged', 'user', 'paymen' }
  
   			"client" 	-> TRUE if a existing a valid consumer_key related to a context in request. TODO: Check CES Interop exacdt context! 
@@ -42,7 +43,7 @@ A common service can be consumed by http://yourCES_Server/entrypoint/resource, i
 
  - string **id** Identifies the retrieved entity
 
-Returns:
+OUT:
   - array wether....
  
  		$type == 'client' 	[ (string)context ]
@@ -51,6 +52,8 @@ Returns:
  		$type == 'payment' 	[ (int)id, (int)buyer, (int)seller, (int)(amount), (string)concept, (int)state ]
  		
 2.2) POST (creates new payment), with params:
+
+IN:
   - array **params**
   
     		string **buyer** Buyer account name.
@@ -58,8 +61,9 @@ Returns:
   			int **amount** Amount in cents.
   			string **concept** Any description for transaction.
 
-Returns:
- - array [ (int)id, (bool)result, (int)state ]
+OUT:
+ - array 
+        [ (int)id, (bool)result, (int)state ]
  
 NOTE: (int)state is a valid  TransactionInterface::STATE
 
