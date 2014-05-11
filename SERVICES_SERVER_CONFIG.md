@@ -24,13 +24,13 @@ A continuación, pasaremos a **editar el servicio** recién creado. En la pesta�
 
 En **Authentication** seleccionaremos el *contexto oAuth* que hemos creado anteriormente, en Default required Authorization seleccionamos el nivel que le hemos dado a nuestro contexto y en Default required authentication  ponemos  *Consumer key, 3-legged oAuth*. La última pestaña a editar será **Resources**. 
 
-Aquí volveremos tras instalar el resource **ces/ces_interop** para activarlo. En **required authentication** habrá que señalar:
+Aquí volveremos tras instalar el resource **ces/ces_interop** para activarlo. En **required authentication** habrá que señalar en el resource **interop**:
 
-CREATE *Consumer key + token*
-UPDATE *Consumer key + token*
-INDEX *Cap* (la validació es farà al control d'access del módul).
+- CREATE *Consumer key + token*
+- UPDATE *Consumer key + token*
+- INDEX *Cap* (la validació es farà al control d'access del módul).
 
-y en **required authorization** el contexto creado *CES Interoperatibility*  para cada operación.
+y en **required authorization** de cada uno de ellos, el contexto creado *CES Interoperatibility*.
 
 
 Create user oAuth consumer 
