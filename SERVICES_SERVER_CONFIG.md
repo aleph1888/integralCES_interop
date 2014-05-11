@@ -1,4 +1,4 @@
- Installing modules 
+Installing modules 
 ----------------------------------
 * Chaos tool suite
  <pre>$drush en ctools -y</pre>
@@ -9,6 +9,11 @@
 * Services (includes REST Server)
  <pre>$drush en services -y</pre>
 Activar via web oAuth, Services, Services-authentication, services-servers(REST server)
+
+Activating CES Interoperatibily module
+--------------------------------------
+As you have [installed](https://wiki.enredaos.net/index.php?title=InitIntegralCESDev#Instalando_m.C3.B3dulo_ces_para_desarrollo) an integralCES web site, you need to activate CES-CES_interop module by acceding via your admin UI interface to **modules** section.
+
 
 Add Authorization level 
 -------------------------------------
@@ -43,7 +48,7 @@ Allow authenticated users in your created context
 ---------------------------------------------------------------
 In order to allow your users to get 3-legged access token, check in People->Permissions **OAuth** options *Register OAuth consumers in CES Context* and *Authorize OAuth consumers in CES Context*.
 
-Prueba 
+Testing
 --------------------
 Para probar que todo funciona correctamente podemos usar un complemento para Firefox llamado **RESTClient**. Para usarlo hacemos click en su icono en la barra de herramientas y, en su ventana añadimos nuestro **usuario oAuth** en la opción **Authentication – >OAuth** del menú superior. Rellenamos el **Consumer key y el Consumer secret**, el resto no hace falta con nuestro tipo de autentificación 2-legged.
 
