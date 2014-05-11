@@ -58,7 +58,7 @@ Drupal CES [issue](https://drupal.org/node/2215167).
 
 API
 -------------
-There is an existing [API](https://github.com/aleph1888/integralCES_consumer/tree/master/includes/icesSDKv0) and a (use it)[API](https://github.com/aleph1888/integralCES_consumer) example.
+There is an existing API [icesSDKv0](https://github.com/aleph1888/integralCES_consumer/tree/master/includes/icesSDKv0) and a [use it](https://github.com/aleph1888/integralCES_consumer) example.
 
 Testing development [server](http://cicicdev.enredaos.net/integralCES_consumer/index.php).
 
