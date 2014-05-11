@@ -10,7 +10,7 @@ Whats this for
 
 Server configuracion
 ----------------------------------
-Create web service by using your drupal UI Admin interface. Here you have the [steps](https://github.com/aleph1888/integralCES_interop/blob/master/SERVICES_SERVER_CONFIG.md)
+Create web service by using your drupal UI Admin interface. Here you have the [steps](https://github.com/aleph1888/integralCES_interop/blob/master/SERVICES_SERVER_CONFIG.md).
 
 
 Using info
@@ -50,20 +50,22 @@ Using info
 Info
 ------------------
 
-Testing development [server](http://cicicdev.enredaos.net/cesinterop)
+Testing development [server](http://cicicdev.enredaos.net/cesinterop).
 
-Drupal CES [issue](https://drupal.org/node/2215167)
+Drupal CES [issue](https://drupal.org/node/2215167).
 
 API
 -------------
-There is an existin [API](https://github.com/aleph1888/integralCES_consumer/tree/master/includes/icesSDKv0) and a (use it)[API](https://github.com/aleph1888/integralCES_consumer) example.
+There is an existing [API](https://github.com/aleph1888/integralCES_consumer/tree/master/includes/icesSDKv0) and a (use it)[API](https://github.com/aleph1888/integralCES_consumer) example.
+
+Testing development [server](http://cicicdev.enredaos.net/integralCES_consumer/index.php).
 
 
 Doc
 ---------------
-[Documentation](https://wiki.enredaos.net/index.php?title=COOPFUND-DEV#integralCES_interop)
+[Documentation](https://wiki.enredaos.net/index.php?title=COOPFUND-DEV#integralCES_interop).
 
-[Developer](http://www.integralces.net/doc/developer)
+[Developer](http://www.integralces.net/doc/developer).
 
 Contribute
 --------------
