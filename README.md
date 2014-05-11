@@ -16,7 +16,9 @@ Create web service by using your drupal UI Admin interface. Here you have the [s
 Using info
 ----------------
 
-2) Consuming entrypoint/resource:
+2) Http consuming: 
+
+A common service can be consumed by http://yourCES_Server/entrypoint/resource, if you have configured your REST server named as it is named on [tutorial](https://github.com/aleph1888/integralCES_interop/blob/master/SERVICES_SERVER_CONFIG.md) *gateway*, then your url will be:
 
 * http://yourCES_Server/gateway/interop
 
