@@ -12,7 +12,7 @@ Activar via web oAuth, Services, Services-authentication, services-servers(REST 
 
 Activating CES Interoperatibily module
 --------------------------------------
-As you have [installed](https://wiki.enredaos.net/index.php?title=InitIntegralCESDev#Instalando_m.C3.B3dulo_ces_para_desarrollo) an integralCES web site, you need to activate CES-CES_interop module by acceding via your admin UI interface to **modules** section.
+As you have [installed](https://wiki.enredaos.net/index.php?title=InitIntegralCESDev#Instalando_m.C3.B3dulo_ces_para_desarrollo) an integralCES web site, you need to activate *CES|CES_interop module* via your admin UI interface in **modules** section.
 
 
 Add Authorization level 
