@@ -7,12 +7,36 @@ Features
 ----------------
 1) Hooking [*services_resources*](http://drupalcontrib.org/api/drupal/contributions!services!services.services.api.php/function/hook_services_resources/6) in ces_interop.module
 
-Available methods:
- *      GET index: Retrieves json object representing a user or a payment.
- *      POST create: Creates a new transaction.
- *      PUT update: Applies a transaction.
+2) Consuming entrypoint/resource:
 
-2) Implementing callbacks in ces_interop.inc
+* http://yourCES_Server/gateway/interop
+
+3) Available methods:
+
+* GET, with params:
+  - string **type** { 'client', 'logged', 'user', 'paymen' }
+ 
+  			"client" 	-> TRUE if a existing a valid consumer_key related to a context in request. TODO: Check CES Interop exacdt context! 
+  					--> Meaning: Site client ask for a valid key/secret site configuration.
+  
+  			"logged"	-> TRUE if an existing logged in user found inside request token.
+  					--> Meaning: A user authorization has been performed so exists a valid access_token.
+  
+  			 "user"   	-> Same as client
+  					--> Meaning: Client wants to retrieve a user.
+  
+  			"payment"	-> Same as client.
+  					--> Meaning: Client wants to retrieve a payment.
+
+ - string **id** Identifies the retrieved entity
+ 
+* POST (creates new payment), with params:
+  - array **params**
+  
+    		string **buyer** Buyer account name.
+  			string **seller** Buyer account name.
+  			int **amount** Amount in cents.
+  			string **concept** Any description for transaction.
 
 Info
 ------------------
@@ -23,7 +47,7 @@ Drupal CES [issue](https://drupal.org/node/2215167)
 
 API
 -------------
-There is an existin [API](https://github.com/aleph1888/integralCES_consumer/tree/master/includes/icesSDKv0) and a (use it)[[API](https://github.com/aleph1888/integralCES_consumer) example.
+There is an existin [API](https://github.com/aleph1888/integralCES_consumer/tree/master/includes/icesSDKv0) and a (use it)[API](https://github.com/aleph1888/integralCES_consumer) example.
 
 
 Doc
