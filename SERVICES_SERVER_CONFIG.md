@@ -1,6 +1,6 @@
 Whats this for
----------------
-[A web service for a gateway...](https://wiki.enredaos.net/images/2/21/IntegralcesGeneric.png), that implements [OAuth 1.0](https://wiki.enredaos.net/images/thumb/c/c2/OAuth_Process.jpg/200px-OAuth_Process.jpg) in [3-legged](https://wiki.enredaos.net/images/thumb/c/c2/OAuth_Process.jpg/800px-OAuth_Process.jpg) way.
+----------------------------------
+[A web service for a gateway...](https://wiki.enredaos.net/images/2/21/IntegralcesGeneric.png), that implements [OAuth 1.0](https://wiki.enredaos.net/index.php?title=File:Oauth-drupal.jpg) in [3-legged](https://wiki.enredaos.net/images/thumb/c/c2/OAuth_Process.jpg/800px-OAuth_Process.jpg) way.
 
  Installing modules 
 ----------------------------------
