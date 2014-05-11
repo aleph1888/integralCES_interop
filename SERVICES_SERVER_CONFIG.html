@@ -1,0 +1,41 @@
+<html>
+	<body>
+	<h6> <span class="mw-headline" id="Installing_modules"> Installing modules </span></h6>
+<ul><li> Chaos tool suite
+</li></ul>
+ <pre>$drush en ctools -y</pre>
+<ul><li> oAuth ( Me da un error recursivo preguntando sobrescribir el directorio sites/all/modules/oAuth )
+</li></ul>
+ <pre>$drush en oauth -y</pre>
+<ul><li> Libraries (REST Server dependency)
+</li></ul>
+ <pre>$drush en libraries -y</pre>
+<ul><li> Services (includes REST Server)
+</li></ul>
+ <pre>$drush en services -y</pre>
+<p>Activar via web oAuth, Services, Services-authentication, services-servers(REST server)
+</p>
+<h6> <span class="mw-headline" id="Add_Authorization_level"> Add Authorization level </span></h6>
+<p>Entrar en el panel de <b>configuración</b> de nuestro Drupal y en el apartado <b>Web Services</b> entramos en <b>oAuth</b> y seleccionamos la pestaña <i>Add Context</i>. Damos <b>context title</b> (<i>CES Context</i>) y <b>context name</b> (<i>cesinterop_context</i>).  Dentro de ésta, en la sección <b>Authorization Levels</b>, pulsamos sobre el botón <b>Add authorization level</b>, le damos un <b>nombre</b> (<i>interop</i>) y un <b>título</b> (<i>CES Interoperatibility</i>) al nuevo nivel y seleccionamos la casilla <i>Selected By Default</i>. En <b>signature methods</b>, escogemos los métodos de firma que queremos habilitar, para este ejemplo <i>HMAC_SHA1</i>.
+</p>
+<h6> <span class="mw-headline" id="Create_service_json"> Create service json </span></h6>
+<p>Crearemos un servicio con <b>autorización</b>: <i>3-legged oAuth</i>.
+</p><p>Lo siguiente será <b>crear un servicio</b>. Para esto deberemos dirigirnos a <i>Structure-&gt; Services –&gt; Add</i>. Como <b>endpoint</b> le damos la dirección que seguirá a la dirección raíz de nuestro drupal (<a rel="nofollow" class="external free" href="http://my_drupal_local/my_instalacion_local/endpoint">http://my_drupal_local/my_instalacion_local/endpoint</a>. Si le damos como endpoint <i>gateway</i>, en nuestro caso será: <a rel="nofollow" class="external free" href="http://cicdev.enredaos.net/cesinterop/gateway">http://cicdev.enredaos.net/cesinterop/gateway</a>. Como <b>server</b> <i>REST</i> y como <b>machine name</b> el que queramos (<i>ces_gateway</i>) y le otorgamos <b>autentificación</b> <i>oAuth</i> marcando la correspondiente casilla.
+</p><p>A continuación, pasaremos a <b>editar el servicio</b> recién creado. En la pestaña <b>Server</b> sólo dejaremos marcadas las casillas <i>json</i> y <i>application/json</i>. También podemos agregar <i>application/x-www-form-urlencoded</i>  si vamos a enviar formularios.
+</p><p>En <b>Authentication</b> seleccionaremos el <i>contexto oAuth</i> que hemos creado anteriormente, en Default required Authorization seleccionamos el nivel que le hemos dado a nuestro contexto y en Default required authentication  ponemos  <i>Consumer key, 3-legged oAuth</i>. La última pestaña a editar será <b>Resources</b>. 
+</p><p>Aquí volveremos tras instalar el resource <b>ces/ces_interop</b> para activarlo. En <b>required authentication</b> habrá señalar <i>Consumer key</i> y en <b>required authorization</b> <i>Default</i> para cada operación.
+</p><p>También podemos habilitar las opciones de <b>node</b> para probar el funcionamiento.
+</p>
+<h6> <span class="mw-headline" id="Create_user_oAuth_consumer"> Create user oAuth consumer </span></h6>
+<p>Para terminar sólo tendremos que crear un <b>usuario oAuth</b> que nos de acceso al servicio sin poner en riesgo la seguridad del sistema. Para esto, en <i>gent-&gt;permisos-&gt;rols</i> crearemos un <b>rol de usuario</b> llamado <i>ces oAuth</i> y que para este ejemplo posea los siguientes <b>privilegios adicionales</b>: En el apartado <b>oAuth</b> hay que añadirle <i>Access own oAuth authorizations</i>, <i>Access own oAuth consumers</i>, <i>Register oAuth consumers in CES Context</i> y <i>Authorize oAuth consumers in CES Context</i>. En el apartado <b>services</b>, <i>save file information</i>.
+</p><p>Creamos un <b>usuario consumer</b> llamado <i>ces_consumer</i> con <b>contraseña</b> <i>ces_consumer</i> y <b>rol</b> <i>ces oAuth</i> que sea el encargado de realizar las peticiones y nos identificamos con él en nuestro Drupal. Entramos en  <b>User Account</b> (<i>Mi cuenta</i>) (¿<b>Es posible que haya que crearle una cuenta dentro de un exchange para que pueda acceder</b>?) accedemos a la pestaña <b>oAuth Consumers</b>, añadimos un consumidor con <b>nombre</b> <i>ces_consumer_oAuth</i>, por ejemplo, y <b>callback url</b> en blanco para pasársela vía código cuando la aplicación que consume la api haga la petición. Y ya está. Ahora, una vez creado, podemos acceder a nuestro <b>consumer key</b> <i>6fkm9oB4wUugyTGfiBR2oxQU6HE8Z8qV</i> y <b>consumer secret</b> <i>3rLQiS63Wzsx3fsjWZefCTgtcj3MWw8u</i> accediendo a la pestaña <b>oAuth consumers</b> del  usuario y clicando en <b>editar</b> sobre el consumidor creado. Y con esto hemos terminado de crear nuestro servicio web y nuestro usuario para acceder a sus recursos.
+</p>
+<h6> <span class="mw-headline" id="Allow_authenticated_users_in_your_created_context"> Allow authenticated users in your created context </span></h6>
+<p>In order to allow your users to get 3-legged access token, check in People-&gt;Permissions <b>OAuth</b> options <i>Register OAuth consumers in CES Context</i> and <i>Authorize OAuth consumers in CES Context</i>.
+</p>
+<h6> <span class="mw-headline" id="Prueba"> Prueba </span></h6>
+<p>Para probar que todo funciona correctamente podemos usar un complemento para Firefox llamado <b>RESTClient</b>. Para usarlo hacemos click en su icono en la barra de herramientas y, en su ventana añadimos nuestro <b>usuario oAuth</b> en la opción <b>Authentication – &gt;OAuth</b> del menú superior. Rellenamos el <b>Consumer key y el Consumer secret</b>, el resto no hace falta con nuestro tipo de autentificación 2-legged.
+</p><p>Si hemos habilitado en el paso anterior <b>node</b>, podemos lanzar una GET con <i>nuestra url + endopoint + nombre de resource</i>, por ejemplo, <a rel="nofollow" class="external free" href="http://cicicdev.enredaos.net/cesinterop/gateway/node">http://cicicdev.enredaos.net/cesinterop/gateway/node</a> y, también, lo mismo pero agregando el id de un nodo existente: <a rel="nofollow" class="external free" href="http://cicicdev.enredaos.net/cesinterop/gateway/node/1">http://cicicdev.enredaos.net/cesinterop/gateway/node/1</a>
+</p>
+</body>
+</html>
