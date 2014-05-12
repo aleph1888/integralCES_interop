@@ -29,11 +29,13 @@ A common service can be consumed by http://yourCES_Server/entrypoint/resource, i
 IN:
   - string **type** { 'client', 'logged', 'user', 'paymen' }
  
-  			"client" 	-> TRUE if a existing a valid consumer_key related to a context in request. TODO: Check CES Interop exacdt context! 
-  					--> Meaning: Site client ask for a valid key/secret site configuration.
-  
+  			"client" 	-> TRUE if a existing a valid consumer_key related to a context in request. TODO: Check CES Interop exact context! 
+
   			"logged"	-> TRUE if an existing logged in user found inside request token.
   					--> Meaning: A user authorization has been performed so exists a valid access_token.
+
+        "account"  -> Same as client
+            --> Meaning: Client wants to retrieve a user.
   
   			 "user"   	-> Same as client
   					--> Meaning: Client wants to retrieve a user.
@@ -47,8 +49,9 @@ OUT:
   - array wether....
  
  		$type == 'client' 	[ (string)context ]
- 		$type == 'logged' 	[ (int)id, (string)name, int(amount) ]
- 		$type == 'user' 	  [ (int)id, (string)name, int(amount) ]
+ 		$type == 'logged' 	[ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ] accounts ]
+ 		$type == 'user' 	  [ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ] accounts ]
+ 		$type == 'account'  [ (int)id, (string)name, (int)balance) ]
  		$type == 'payment' 	[ (int)id, (int)buyer, (int)seller, (int)(amount), (string)concept, (int)state ]
  		
 2.2) POST (creates new payment), with params:
