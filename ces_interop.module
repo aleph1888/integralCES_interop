@@ -19,14 +19,14 @@ function ces_interop_services_resources() {
 				'access arguments append' => TRUE,
 				'args' => array(
 					array(
-						'name' => 'buyer',
+						'name' => 'buyer_account',
 						'type' => 'string',
 						'description' => 'Account name of the buyer user, four chars.',
 						'source' => 'data',
 						'optional' => FALSE,
 					),
 					array(
-						'name' => 'seller',
+						'name' => 'seller_account',
 						'type' => 'string',
 						'description' => 'Account name of the seller user, four chars.',
 						'source' => 'data',
@@ -76,7 +76,7 @@ function ces_interop_services_resources() {
 					array(
 						'name' => 'type',
 						'type' => 'string',
-						'description' => 'Can be {client, logged, user, payment}',
+						'description' => 'Can be {client, logged, user, account, payment}',
 						'source' => array( 'param' => 'type' ),
 						'optional' => FALSE,
 					),
