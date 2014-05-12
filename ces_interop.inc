@@ -297,6 +297,9 @@ function _ces_interop_gateway_get_oauth_user() {
  *			 "user"   	-> Same as client
  *					--> Meaning: Client wants to retrieve a user.
  *
+ *                       "account"      -> Same as client
+ *                                      --> Meaning: Client wants to retrieve a user.
+ *
  *			"payment"	-> Same as client.
  *					--> Meaning: Client wants to retrieve a payment.
  *	
@@ -315,7 +318,7 @@ function _ces_interop_gateway_access( $op, $args = NULL ) {
 		case "interop gateway index":
 			
 			switch( $args[0] ) {
-				case "client" || "user":
+				case "client" || "user" || "account" :
                                         $context =  _ces_interop_gateway_get_oauth_context();
                                         $ACCESS = $context;
 					break;
