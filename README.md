@@ -33,8 +33,8 @@ IN:
 
   			"logged"	-> TRUE if an existing logged in user found inside request token.
   					--> Meaning: A user authorization has been performed so exists a valid access_token.
-
-        "account"  -> Same as client
+  					
+  			"account"  -> Same as client
             --> Meaning: Client wants to retrieve a user.
   
   			 "user"   	-> Same as client
