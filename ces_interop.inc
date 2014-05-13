@@ -25,6 +25,7 @@ function _ces_interop_get_user( $id ) {
 		$bank = new bank();
 		$return_user["accounts"] =  $bank->getUserAccounts( $id );
 		return $return_user;
+
 	}
 
 	return NULL;
@@ -43,8 +44,8 @@ function _ces_interop_get_user( $id ) {
  * @returns array wether....
  *
  *		$type == 'client' 	[ (string)context ]
- *		$type == 'logged' 	[ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ] accounts ]
- *		$type == 'user' 	[ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ] accounts ]
+ *		$type == 'logged' 	[ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ])accounts ]
+ *		$type == 'user' 	[ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ])accounts ]
  *		$type == 'account' 	[ (int)id, (string)name, (int)balance) ]
  *		$type == 'payment' 	[ (int)id, (int)buyer_account, (int)seller_account, (int)amount, (string)concept, (int)state ]
  *
@@ -78,6 +79,7 @@ function _ces_interop_gateway_index( $type, $id = 0 ) {
                         break;
 
 		case "account":
+
 			$bank = new bank();
 			if ( (string)$id ) 
 				return $bank->getAccountByName( (string)$id );
@@ -86,6 +88,7 @@ function _ces_interop_gateway_index( $type, $id = 0 ) {
 			break;
 
 		case "payment":
+
 			$bank = new bank();
 
 			$transaction = ces_transaction_load( (int)$id );
@@ -271,6 +274,7 @@ function _ces_interop_gateway_get_oauth_user() {
 		$token = DrupalOAuthToken::loadbyKey( $token_key, $consumer );
 		return $token->uid;
 	}
+
 	return 0;
 
 }
@@ -294,11 +298,11 @@ function _ces_interop_gateway_get_oauth_user() {
  *			"logged"	-> TRUE if an existing logged in user found inside request token.
  *					--> Meaning: A user authorization has been performed so exists a valid access_token.
  *
- *			 "user"   	-> Same as client
+ *			"user"   	-> Same as client
  *					--> Meaning: Client wants to retrieve a user.
  *
- *                       "account"      -> Same as client
- *                                      --> Meaning: Client wants to retrieve a user.
+ *                      "account"      	-> Same as client
+ *                                      --> Meaning: Client wants to retrieve an account.
  *
  *			"payment"	-> Same as client.
  *					--> Meaning: Client wants to retrieve a payment.
@@ -318,7 +322,7 @@ function _ces_interop_gateway_access( $op, $args = NULL ) {
 		case "interop gateway index":
 			
 			switch( $args[0] ) {
-				case "client" || "user" || "account" :
+				case "client" || "user" || "account":
                                         $context =  _ces_interop_gateway_get_oauth_context();
                                         $ACCESS = $context;
 					break;
@@ -336,6 +340,7 @@ function _ces_interop_gateway_access( $op, $args = NULL ) {
                                         break;
 			}
 			break;
+
 	}
 	return $ACCESS;
 
