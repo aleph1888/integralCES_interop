@@ -33,9 +33,9 @@ IN:
 
   			"logged"	-> TRUE if an existing logged in user found inside request token.
   					--> Meaning: A user authorization has been performed so exists a valid access_token.
-
-        "account"  -> Same as client
-            --> Meaning: Client wants to retrieve a user.
+  					
+  			"account"  -> Same as client
+  					--> Meaning: Client wants to retrieve a user.
   
   			 "user"   	-> Same as client
   					--> Meaning: Client wants to retrieve a user.
@@ -50,7 +50,7 @@ OUT:
  
  		$type == 'client' 	[ (string)context ]
  		$type == 'logged' 	[ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ] accounts ]
- 		$type == 'user' 	  [ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ] accounts ]
+ 		$type == 'user'     [ (int)id, (string)name, (array of arrays[ (int)id, (string)name, (int)balance) ] accounts ]
  		$type == 'account'  [ (int)id, (string)name, (int)balance) ]
  		$type == 'payment' 	[ (int)id, (int)buyer, (int)seller, (int)(amount), (string)concept, (int)state ]
  		
