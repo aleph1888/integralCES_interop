@@ -73,7 +73,7 @@ NOTE: (int)state is a valid  TransactionInterface::STATE
 Info
 ------------------
 
-Testing development [server](http://cicicdev.enredaos.net/cesinterop).
+Testing development [server](http://cicicdev.enredaos.net:8080/cesinterop).
 
 Drupal CES [issue](https://drupal.org/node/2215167).
 
@@ -81,7 +81,7 @@ API
 -------------
 There is an existing API [icesSDKv0](https://github.com/aleph1888/integralCES_consumer/tree/master/includes/icesSDKv0) and a [use it](https://github.com/aleph1888/integralCES_consumer) example.
 
-Testing development [server](http://cicicdev.enredaos.net/integralCES_consumer/index.php).
+Testing development [server](http://cicicdev.enredaos.net:8080/integralCES_consumer/index.php).
 
 
 Doc
