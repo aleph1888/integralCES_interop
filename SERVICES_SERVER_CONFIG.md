@@ -2,9 +2,9 @@ Installing modules
 ----------------------------------
 * Chaos tool suite
  <pre>$drush en ctools -y</pre>
-* oAuth (última version oauth ya que <pre>$drush en oauth -y</pre>) baja una versión obsoleta
+* oAuth 
  <pre>$cd mysite/sites/all/modules
-wget http://ftp.drupal.org/files/projects/oauth-7.x-3.2.tar.gz
+ + patch (https://drupal.org/files/980340-d7.patch)
 </pre>
 * Libraries (REST Server dependency)
  <pre>$drush en libraries -y</pre>
