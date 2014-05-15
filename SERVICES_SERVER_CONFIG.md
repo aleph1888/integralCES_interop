@@ -3,9 +3,10 @@ Installing modules
 * Chaos tool suite
  <pre>$drush en ctools -y</pre>
 * oAuth 
- <pre>$cd mysite/sites/all/modules
- + patch (https://drupal.org/files/980340-d7.patch)
-</pre>
+ <pre>$drush en oauth</pre>
+ After loggin bug patch:
+ (https://drupal.org/files/980340-d7.patch)
+
 * Libraries (REST Server dependency)
  <pre>$drush en libraries -y</pre>
 * Services (includes REST Server)
