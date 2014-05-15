@@ -2,8 +2,10 @@ Installing modules
 ----------------------------------
 * Chaos tool suite
  <pre>$drush en ctools -y</pre>
-* oAuth ( Me da un error recursivo preguntando sobrescribir el directorio sites/all/modules/oAuth )
- <pre>$drush en oauth -y</pre>
+* oAuth (última version oauth ya que <pre>$drush en oauth -y</pre>) baja una versión obsoleta
+ <pre>$cd mysite/sites/all/modules
+wget http://ftp.drupal.org/files/projects/oauth-7.x-3.2.tar.gz
+</pre>
 * Libraries (REST Server dependency)
  <pre>$drush en libraries -y</pre>
 * Services (includes REST Server)
